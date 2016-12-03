@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 MESSAGE="$@"
-[[ -z "$MESSAGE" ]] && MESSAGE="hello world"
+[[ -z "$MESSAGE" ]] && MESSAGE="hello world $(date +%FT%T)"
 echo "$MESSAGE" \
   | openssl rsautl -encrypt -pubin -inkey keys/mykey.pub \
-  | base64 \
+  | openssl enc -base64 \
   > messages/message.cipher.txt
 
 # openssl rsautl -encrypt -inkey public.pem -pubin -in file.txt -out file.ssl

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+secret="foobar"
+
+recalculated_signature="$( cat data/jwt_payload \
+  | tr -d '\n' \
+  | openssl dgst -sha256 -binary -hmac ${secret} \
+  | openssl enc -base64 \
+  )"
+
+echo "recalculated_signature:$recalculated_signature"
+echo "original signature:$(cat data/jwt_hs256_signature)"
+original_signature="$(cat data/jwt_hs256_signature)"
+
+if [[ "$recalculated_signature" == "$original_signature" ]];then
+  echo valid
+else
+  echo invalid
+fi

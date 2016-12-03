@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+MESSAGE="$@"
+[[ -z "$MESSAGE" ]] && MESSAGE="hello world $(date +%FT%T)"
+echo -n "$MESSAGE" \
+  | openssl dgst -sha256  \
+  > messages/message.hash.txt
+
+

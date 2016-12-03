@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+MESSAGE="$@"
+[[ -z "$MESSAGE" ]] && MESSAGE="hello world"
+echo -n "$MESSAGE" \
+  | openssl dgst -sha256 -verify keys/mykey.pub \
+    -signature messages/message.hash.sign.txt
+

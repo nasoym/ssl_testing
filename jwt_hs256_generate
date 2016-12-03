@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+header="$(jq -M -c . data/header.json | tr -d '\n' | openssl enc -base64)"  
+payload="$(jq -M -c . data/payload.json | tr -d '\n' | openssl enc -base64)"  
+
+secret="foobar"
+
+signature="$( echo -n "${header}.${payload}" \
+  | openssl dgst -sha256 -binary -hmac ${secret} \
+  | openssl enc -base64 )"
+
+echo "${header}.${payload}.${signature}" \
+  | tee data/jwt_hs256
+
+echo "${signature}" \
+  | tee data/jwt_hs256_signature
+
+echo "${header}.${payload}" \
+  | tee data/jwt_payload
+
