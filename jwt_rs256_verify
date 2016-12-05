@@ -2,6 +2,6 @@
 
 cat data/jwt_payload \
   | tr -d '\n' \
-  | openssl sha -sha256 -verify keys/mykey.pub\
+  | openssl sha -sha256 -verify keys/mykey.pub \
   -signature <(cat data/jwt_rs256_signature | openssl enc -base64 -d )
 
