@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p messages
+
 MESSAGE="$@"
 [[ -z "$MESSAGE" ]] && MESSAGE="hello world $(date +%FT%T)"
 echo -n "$MESSAGE" \

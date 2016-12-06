@@ -7,6 +7,8 @@ signature="$( echo -n "${header}.${payload}" \
   | openssl sha -sha256 -binary -sign keys/mykey.pem \
   | openssl enc -base64 )"
 
+mkdir -p data
+
 echo "${header}.${payload}.${signature}" \
   | tee data/jwt_rs256
 

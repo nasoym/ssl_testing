@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+mkdir -p keys
 
 # openssl genrsa -des3 -out keys/mykey.pem 2048
 openssl genrsa -out keys/mykey.pem 2048
