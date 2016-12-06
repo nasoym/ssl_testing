@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-header="$(jq -M -c . data/header.json | tr -d '\n' | openssl enc -base64)"  
-payload="$(jq -M -c . data/payload.json | tr -d '\n' | openssl enc -base64)"  
+header="$(jq -M -c . jwt_sample_data/header.json | tr -d '\n' | openssl enc -base64)"  
+payload="$(jq -M -c . jwt_sample_data/payload.json | tr -d '\n' | openssl enc -base64)"  
 
 secret="foobar"
 
