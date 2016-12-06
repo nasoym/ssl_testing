@@ -1,4 +1,5 @@
 {
   "typ": "JWT",
+  "kid": "mykey.pub",
   "alg": "RS256"
 }
