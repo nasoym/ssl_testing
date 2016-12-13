@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-header="$(jq -M -c . jwt_sample_data/header_rs256.json | tr -d '\n' | base64)"  
-payload="$(jq -M -c . jwt_sample_data/payload.json | tr -d '\n' | base64)"  
+header="$(jq -M -c . jwt_sample_data/header_rs256.json | tr -d '\n' | base64 --wrap 0)"  
+payload="$(jq -M -c . jwt_sample_data/payload.json | tr -d '\n' | base64 --wrap 0)"  
 
 signature="$( echo -n "${header}.${payload}" \
   | openssl sha -sha256 -binary -sign keys/mykey.pem \
-  | base64 )"
+  | base64 --wrap 0)"
 
 mkdir -p data
 
