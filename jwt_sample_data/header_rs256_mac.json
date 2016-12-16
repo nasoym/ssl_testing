@@ -1,0 +1,5 @@
+{
+  "typ": "JWT",
+  "kid": "mykey_mac.pub",
+  "alg": "RS256"
+}
